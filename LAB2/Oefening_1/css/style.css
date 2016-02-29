@@ -45,7 +45,7 @@ nav a{
 }
 
 /* == Albums == */
-h2{
+#albums h2{
 	color: white;
 	text-align: center;
 }
@@ -87,7 +87,6 @@ nav li{
 
 #albums ul{
 	flex-direction: row;
-	justify-content: center;
 }
 }
 
