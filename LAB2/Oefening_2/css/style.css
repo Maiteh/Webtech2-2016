@@ -1,12 +1,12 @@
 nav ul{
     display: flex;
     flex-wrap: wrap;
-    justify-content:space-between;
+    justify-content:center;
 }
 nav ul li{
     font-size: 1.2rem;
     list-style: none;
-    width: 25%;
+    width: 150px;
     text-align: center;
 }
 .logo{
@@ -20,6 +20,35 @@ nav ul li{
     justify-content: space-around;
     flex-wrap: wrap;
 }
-#photos div{
+#photos img{
     margin: 20px;
+}
+
+
+/* ==  Bigger screens == */
+@media (min-width: 960px) {  
+nav ul li{
+    margin: auto;
+}
+.typography
+{
+    order: 1;
+}
+.ui
+{
+    order: 2;
+}
+.logo
+{
+    order: 3;
+    width: 150px;
+}
+.branding
+{
+    order: 4;
+}
+.graffiti
+{
+    order: 5;
+}
 }
