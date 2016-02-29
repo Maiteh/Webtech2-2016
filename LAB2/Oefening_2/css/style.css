@@ -13,3 +13,13 @@ nav ul li{
     width: 100%;
     text-align: center;
 }
+
+#photos{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+#photos div{
+    margin: 20px;
+}
