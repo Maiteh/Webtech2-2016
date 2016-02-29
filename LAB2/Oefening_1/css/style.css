@@ -12,10 +12,6 @@ body{
 }
 
 /* === Custom css === */
-header{
-	display: flex;
-}
-
 h1{
     font-size: 2.4rem;
     text-transform: uppercase;
@@ -23,7 +19,7 @@ h1{
     font-style: italic;
     font-weight: bold;
     background: 
-    	-webkit-linear-gradient(bottom left, #fc80de 0%, #853ee1 10%);
+    	-webkit-linear-gradient(bottom left, #fc80de 0%, #853ee1 25%);
     	-webkit-background-clip: text;
       	-webkit-text-fill-color: transparent;
     margin-left: 20px;
@@ -43,41 +39,70 @@ nav li{
 	flex: 1;
 }
 nav a{
-    text-decoration: none;
-    color: white;
-    font-size: 0.8rem;
+	text-decoration: none;
+	color: white;
+	font-size: 0.8rem;
 }
 
 /* == Albums == */
 h2{
-    color: white;
-    text-align: center;
+	color: white;
+	text-align: center;
 }
 #albums ul{
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: space-around;
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-content: space-around;
+	text-transform: uppercase;
+    font-family: 'Arial narrow';
+    font-style: italic;
+    font-weight: bold;
+    text-align: center
 }
 #albums li{
-    flex: 1;
-}
-
-@media screen and (max-width: 1200px){
-
+	flex: 1;
 }
 
 
-@media screen and (max-width: 960px){
 
-nav ul {
-	flex-direction: column;
-	align: center;
+
+/* == Middel maat scherm ==*/
+@media screen and (min-width: 960px){
+header{
+	display: flex;
+}
+nav{
+	flex: 1;
+}
+nav ul{
+	height: 70px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 	align-content: space-around;
-}
+}    
 nav li{
-    flex: 1;
+	text-align: center;
 }
 
+#albums ul{
+	flex-direction: row;
+	justify-content: center;
+}
+}
+
+
+/* == Groot scherm == */ 
+@media screen and (min-width: 1100px){
+header{
+	display: flex;
+	width: 100%;
+}
+nav ul{
+	width: 700px;
+	padding: 0;
+	margin-left: auto;
+}
 }
