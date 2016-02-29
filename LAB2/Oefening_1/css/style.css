@@ -66,8 +66,6 @@ h2{
 }
 
 
-
-
 /* == Middel maat scherm ==*/
 @media screen and (min-width: 960px){
 header{
@@ -83,7 +81,14 @@ nav ul{
 	align-items: center;
 	align-content: space-around;
 }    
+nav li{
+	text-align: center;
+}
 
+#albums ul{
+	flex-direction: row;
+	justify-content: center;
+}
 }
 
 
