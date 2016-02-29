@@ -43,7 +43,6 @@ nav a{
 	color: white;
 	font-size: 0.8rem;
 }
-
 /* == Albums == */
 h2{
 	color: white;
@@ -65,44 +64,5 @@ h2{
 	flex: 1;
 }
 
-
-
-
-/* == Middel maat scherm ==*/
-@media screen and (min-width: 960px){
-header{
-	display: flex;
-}
-nav{
-	flex: 1;
-}
-nav ul{
-	height: 70px;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	align-content: space-around;
-}    
-nav li{
-	text-align: center;
 }
 
-#albums ul{
-	flex-direction: row;
-	justify-content: center;
-}
-}
-
-
-/* == Groot scherm == */ 
-@media screen and (min-width: 1100px){
-header{
-	display: flex;
-	width: 100%;
-}
-nav ul{
-	width: 700px;
-	padding: 0;
-	margin-left: auto;
-}
-}
