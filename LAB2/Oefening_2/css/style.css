@@ -1,0 +1,15 @@
+nav ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+}
+nav ul li{
+    font-size: 1.2rem;
+    list-style: none;
+    width: 25%;
+    text-align: center;
+}
+.logo{
+    width: 100%;
+    text-align: center;
+}
