@@ -12,9 +12,11 @@ body{
 }
 
 /* === Custom css === */
+header{
+	display: flex;
+}
 
-h1
-{
+h1{
     font-size: 2.4rem;
     text-transform: uppercase;
     font-family: 'Arial narrow';
@@ -25,4 +27,37 @@ h1
     	-webkit-background-clip: text;
       	-webkit-text-fill-color: transparent;
     margin-left: 20px;
+}
+
+nav{
+	text-transform: uppercase;
+}
+nav ul{
+	list-style: none;
+	display: flex;	
+	flex-direction: row;
+	align-content: space-around;
+	height: 200px;
+}
+
+nav a{
+    text-decoration: none;
+    color: white;
+    font-size: 0.8rem;
+}
+
+
+
+
+@media screen and (max-width: 960px){
+
+nav ul {
+	flex-direction: column;
+	align: center;
+	align-content: space-around;
+}
+nav li{
+    flex: 1;
+}
+
 }
