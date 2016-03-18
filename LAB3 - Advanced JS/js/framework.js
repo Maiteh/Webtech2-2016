@@ -1,5 +1,5 @@
 /* ---------------------------------------- FRAMEWORK ---------------------------------- */
-var WrapperElement;WrapperElement = function (element) {
+var WrapperElement = function (element) {
     // a wrapper element allow us to extend html dom functionality
     // without changing the behaviour of built-in elements
 
@@ -16,6 +16,7 @@ var WrapperElement;WrapperElement = function (element) {
 };
 
 WrapperElement.prototype.toggleClass = function(className) {
+    //if there are multiple elements we need a loop, otherwise just one toggle able
     if (!this.Array) {
         this.element.classList.toggle(className;)
     } else {
@@ -41,7 +42,7 @@ WrapperElement.prototype.addClass = function(className) {
 };
 
 WrapperElement.prototype.prepend = function(item) {
-
+    this.element.insertAfter(item, this.element.lastChild);
 };
 
 WrapperElement.prototype.keyup = function(action){
