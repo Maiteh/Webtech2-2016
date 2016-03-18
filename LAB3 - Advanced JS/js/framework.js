@@ -15,63 +15,86 @@ var WrapperElement = function (element) {
 };
 
 WrapperElement.prototype.toggleClass = function(className) {
-    //if there are multiple elements we need a loop, otherwise just one toggle able
-    if (!this.Array) {
-        this.element.classList.toggle(className;)
-    } else {
-        for (var i = 0; i < this.element.length; i++) {
+    //Loop if multiple otherwhise just make toggable
+    if(this.isArray) {
+        for(var i = 0; i < this.element.length; i++) {
             this.element[i].classList.toggle(className);
         }
+    } else {
+        this.element.classList.toggle(className);
     }
+    return this;
 };
 
 WrapperElement.prototype.addClass = function(className) {
     if(this.isArray) {
-        // multiple elements, we'll need to loop
-        for(var i = 0; i<this.element.length; i++) {
+        //Loop if multiple otherwhise just add class
+        for(var i = 0; i < this.element.length; i++) {
             this.element[i].className += '' + className;
         }
     } else {
-        // just one element, so we can manipulate it without looping
         this.element.className = className;
     }
-    // return the original WrapperElement, so that we can chain multiple functions like $("li").addClass("test").toggleClass("something");
+    // return Orignal wrapper to use in other functions like addclass or toggleclass and $
     return this;
 };
 
-WrapperElement.prototype.prepend = function(item) {
-    //Telling where the new item should come
-    this.element.insertAfter(item, this.element.lastChild);
+WrapperElement.prototype.prepend = function(item, value) {
+    var newTodo = document.createElement(item);
+    newTodo.className = 'prior-high';
+    var nodetext = document.createTextNode(value);
+    newTodo.appendChild(nodetext);
+
+    var list = document.getElementById('todo-list');
+    list.insertBefore(newTodo, list.childNodes[0]);
+
+    return this;
 };
 
 WrapperElement.prototype.keyup = function(action){
     if(this.isArray) {
         // multiple elements, we'll need to loop
-        for(var i = 0; i<this.element.length; i++) {
+        for(var i = 0; i < this.element.length; i++) {
             this.element[i].addEventListener('keyup', action);
         }
     } else {
         // just one element, let's go nuts
-        this.element.addEventListener('keyup', action);
+        this.element[0].addEventListener('keyup', action);
     }
     return this;
 };
 
-WrapperElement.prototype.click = function(action) {
-    // When there are more we're gonna loop , else not. But either way we're gonna listen to the click event.
-    if (!this.isArray) {
-        this.element.addEventListener('click', action);
-    } else {
-        for (var i = 0; i < this.element.length; i++) {
+WrapperElement.prototype.click = function(action){
+    if(this.isArray){
+        for( var i = 0; i < this.element.length; i++){
             this.element[i].addEventListener('click', action);
         }
     }
+    else {
+        this.element.addEventListener('click', action);
+    }
+    //returning original wrapper element to us it in other functions
+    return this;
 };
 
 WrapperElement.prototype.val = function(value) {
-    var currentItem = this.element.value;
-    document.getElementById("add-item-text").value = '';
-    return currentItem;
+    if(this.isArray) {
+        for(var i = 0; i < this.element.length; i++) {
+            if(value == ''){
+                this.element[i].value = '';
+            } else {
+                return this.element[i].value;
+            }
+        }
+    } else {
+        if(value == ''){
+            this.element.value = '';
+        } else {
+            return this.element.value;
+        }
+    }
+
+    return this;
 };
 
 var $ = function(selector) {
