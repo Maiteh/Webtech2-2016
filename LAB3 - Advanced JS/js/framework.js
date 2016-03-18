@@ -9,8 +9,7 @@ var WrapperElement = function (element) {
     // this allows us to see if a selection contains one or more elements
     if (element.length > 1) {
         this.isArray = true;
-    }
-    else {
+    } else {
         this.isArray = false;
     }
 };
@@ -32,8 +31,7 @@ WrapperElement.prototype.addClass = function(className) {
         for(var i = 0; i<this.element.length; i++) {
             this.element[i].className += " " + className;
         }
-    }
-    else {
+    } else {
         // just one element, so we can manipulate it without looping
         this.element.className = className;
     }
@@ -42,6 +40,7 @@ WrapperElement.prototype.addClass = function(className) {
 };
 
 WrapperElement.prototype.prepend = function(item) {
+    //Telling where the new item should come
     this.element.insertAfter(item, this.element.lastChild);
 };
 
@@ -51,8 +50,7 @@ WrapperElement.prototype.keyup = function(action){
         for(var i = 0; i<this.element.length; i++) {
             this.element[i].addEventListener('keyup', action);
         }
-    }
-    else {
+    } else {
         // just one element, let's go nuts
         this.element.addEventListener('keyup', action);
     }
@@ -60,7 +58,14 @@ WrapperElement.prototype.keyup = function(action){
 };
 
 WrapperElement.prototype.click = function(action) {
-
+    // When there are more we're gonna loop , else not. But either way we're gonna listen to the click event.
+    if (!this.isArray) {
+        this.element.addEventListener("click", action);
+    } else {
+        for (var i = 0; i < this.element.length; i++) {
+            this.element[i].addEventListener("click", action);
+        }
+    }
 };
 
 WrapperElement.prototype.val = function(value) {
