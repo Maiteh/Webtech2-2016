@@ -29,7 +29,7 @@ WrapperElement.prototype.addClass = function(className) {
     if(this.isArray) {
         // multiple elements, we'll need to loop
         for(var i = 0; i<this.element.length; i++) {
-            this.element[i].className += " " + className;
+            this.element[i].className += '' + className;
         }
     } else {
         // just one element, so we can manipulate it without looping
@@ -60,21 +60,23 @@ WrapperElement.prototype.keyup = function(action){
 WrapperElement.prototype.click = function(action) {
     // When there are more we're gonna loop , else not. But either way we're gonna listen to the click event.
     if (!this.isArray) {
-        this.element.addEventListener("click", action);
+        this.element.addEventListener('click', action);
     } else {
         for (var i = 0; i < this.element.length; i++) {
-            this.element[i].addEventListener("click", action);
+            this.element[i].addEventListener('click', action);
         }
     }
 };
 
 WrapperElement.prototype.val = function(value) {
-
+    var currentItem = this.element.value;
+    document.getElementById("add-item-text").value = '';
+    return currentItem;
 };
 
 var $ = function(selector) {
     // check if selector is an object already e.g. by passing 'this' on clicks
-    if(typeof(selector) == "object") {
+    if(typeof(selector) == 'object') {
         return new WrapperElement(selector);
     }
 
