@@ -2,6 +2,7 @@
 var chalk = require('chalk');
 var express = require('express');
 var ejs = require('ejs');
+var cors = require('cors');
 var mongoose = require('mongoose');
 
 //creating the app
@@ -9,6 +10,15 @@ var app = express();
 
 // connect to our database
 mongoose.connect('mongodb://localhost/lab4');
+
+/**
+ * Initialize cors
+ * with cors you can request over different domains
+ * normally only from myapp.com to myapp.com/users...
+ * This allows cross origin calls.
+ */
+app.use(cors());
+
 
 /**
  * Now we need to register ejs as our view engine
