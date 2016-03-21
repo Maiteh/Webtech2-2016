@@ -1,0 +1,17 @@
+<html>
+<head>
+    <link rel="stylesheet" href="/css/styles.css">
+    <title><%= title %></title>
+</head>
+<body>
+<ul>
+    <% for(var i = 0; i < urls.length; i += 1) {%>
+    <li>
+        <a href="<%= urls[i] %>"><%= urls[i] %></a>
+    </li>
+    <% } %>
+</ul>
+<h1><%= title %></h1>
+<img src="/imgs/intro.jpg"/>
+</body>
+</html>
