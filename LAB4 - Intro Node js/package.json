@@ -1,24 +1,20 @@
 {
-  "name": "2imd-webtech2-nodejs",
+  "name": "LAB4 - intro nodejs with messages",
   "version": "1.0.0",
-  "description": "Intro to node.js by @goodbytes",
+  "description": "Our first steps in NodeJS",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/iamgoodbytes/2imd-webtech2-nodejs.git"
-  },
-  "author": "@goodbytes",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/iamgoodbytes/2imd-webtech2-nodejs/issues"
-  },
-  "homepage": "https://github.com/iamgoodbytes/2imd-webtech2-nodejs#readme",
+  "author": "maiteh mertens",
+  "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.0",
+    "chalk": "^1.1.1",
+    "ejs": "^2.4.1",
     "express": "^4.13.4",
-    "mongoose": "^4.4.6"
+    "lodash": "^4.6.1",
+    "mongoose": "^4.4.6",
+    "shortid": "^2.2.4"
   }
 }
