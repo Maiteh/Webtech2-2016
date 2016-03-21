@@ -2,9 +2,14 @@
 var chalk = require('chalk');
 var express = require('express');
 var ejs = require('ejs');
+var mongoose = require('mongoose');
 
 //creating the app
 var app = express();
+
+// connect to our database
+mongoose.connect('mongodb://localhost/lab4');
+
 /**
  * Now we need to register ejs as our view engine
  * express will use our ejs files from the view folder
@@ -29,8 +34,9 @@ app.use(express.static('public'));
 //include a router
 app.use('/', require('./routers'));
 app.use('/users', require('./routers/users'));
+app.use('/messages', require('.routers/messages'));
 
 //Setting up the server on port 3000
 app.listen(3000, function(){
-    console.log(chalk.blue('The app is available on' + chalk.bold.yellow('http://localhost:3000') + '!'));
+    console.log(chalk.pruple('The app is available on' + chalk.bold.blue('http://localhost:3000') + '!'));
 });
