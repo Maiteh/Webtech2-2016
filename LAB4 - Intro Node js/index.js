@@ -33,10 +33,10 @@ app.use(express.static('public'));
 
 //include a router
 app.use('/', require('./routers'));
-app.use('/users', require('./routers/users'));
-app.use('/messages', require('.routers/messages'));
+app.use('/users', require('./routers/user'));
+app.use('/messages', require('./routers/messages'));
 
 //Setting up the server on port 3000
 app.listen(3000, function(){
-    console.log(chalk.pruple('The app is available on' + chalk.bold.blue('http://localhost:3000') + '!'));
+    console.log(chalk.yellow('The app is available on ' + chalk.bold.red('http://localhost:3000') + '!'));
 });
