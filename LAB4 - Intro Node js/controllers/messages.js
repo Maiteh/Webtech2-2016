@@ -1,3 +1,4 @@
+var _ = require('lodash');
 var Message = require('../models/message');
 
 function create (req, res){

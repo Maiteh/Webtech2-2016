@@ -5,7 +5,7 @@
  * NOW you can get and set on var router
  * access the router object, so that we can add routes to it
  * All functionality must be in the controller, routers are only for url's
-*/
+ */
 var controller = require('./../controllers/user');
 var express = require('express');
 var router = express.Router();
