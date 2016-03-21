@@ -3,19 +3,24 @@ var shortid = require('shortid');
 //A modern JS library.
 var _ = require('lodash');
 
-//A static user
-var users = [
-    {
-        id: shortid.generate(),
-        firstname: 'Maiteh',
-        lastname: 'Mertens',
-    },
-    {
-        id: shortid.generate(),
-        firstname: 'Giovanni',
-        lastname: 'Van Bael'
-    }
-];
+
+/**
+ * A static users
+  var users = [
+ {
+     id: shortid.generate(),
+     firstname: 'Maiteh',
+     lastname: 'Mertens',
+ },
+ {
+     id: shortid.generate(),
+     firstname: 'Giovanni',
+     lastname: 'Van Bael'
+ }
+ ];
+ * @type {*[]}
+ */
+
 
 /**
  * get all users
