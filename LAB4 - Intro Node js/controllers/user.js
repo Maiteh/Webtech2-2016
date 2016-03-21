@@ -2,7 +2,7 @@
 var shortid = require('shortid');
 //A modern JS library.
 var _ = require('lodash');
-
+var User = require('./../models/user');
 
 /**
  * A static users
@@ -29,7 +29,16 @@ var _ = require('lodash');
  * @param next
  */
 function getAll(req, res, next) {
-    res.send(users);
+    User
+        .find({})
+        .populate('family')
+        .exec(function onUsersFound(err, users) {
+            // we return the json version with cleaned up model of the user
+            var transform = _.map(users, function (user) {
+                return user.toJSON();
+            });
+            res.send(transform);
+        });
 }
 module.exports.read = getAll;
 
@@ -40,22 +49,32 @@ module.exports.read = getAll;
  * @param next
  */
 function getOne(req, res, next) {
-    res.send(_.find(users, {id: req.params.id}));
+    User.findOne({_id: req.params.id}, function onUserFound(err, user) {
+        if(!user) {
+            res.status(404).send("User not found");
+        }
+
+        // we return the json version with cleaned up model of the user
+        res.send(user.toJSON());
+    });
 }
 module.exports.readOne = getOne;
 
 /**
  * create a new user (req.body)
+ * we return the json version with cleaned up
+ * model of the user
  * @param req
  * @param res
  * @param next
  */
 function add(req, res, next) {
-    var newUser = req.body;
-    newUser.id = shortid.generate();
-    users.push(newUser);
+    var newUser = new User(req.body);
 
-    res.send(newUser);
+    newUser.save(function onUserSaved(err, user) {
+
+        res.send(user.toJSON());
+    });
 }
 module.exports.create = add;
 
@@ -66,14 +85,14 @@ module.exports.create = add;
  * @param next
  */
 function update(req, res, next) {
-    var user = _.find(users, {id: req.params.id});
-    if(!user) {
-        res.status(404).send("User not found");
-    }
+    User.findOneAndUpdate({_id: req.params.id}, req.body, function onUserUpdated(err, user) {
+        if(!user) {
+            res.status(404).send("User not found");
+        }
 
-    user = _.extend(user, req.body);
-
-    res.send(user);
+        // we return the json version with cleaned up model of the user
+        res.send(user.toJSON());
+    });
 }
 module.exports.update = update;
 
@@ -84,7 +103,8 @@ module.exports.update = update;
  * @param next
  */
 function remove(req, res, next) {
-    _.remove(users, {id: req.params.id});
-    res.status(204).send();
+    User.findOneAndRemove({_id: req.params.id}, function onUserFound(err, user) {
+        res.status(204).send();
+    });
 }
 module.exports.remove = remove;
