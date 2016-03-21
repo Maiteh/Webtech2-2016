@@ -1,32 +1,21 @@
 /**
-* Elke routers file moet de express require hebben 
-* anders kent hij express niet.
-* express.router is router die alle routes afhandeld.
-* nu kan je op var router getten en posten
-*/
-// access the router object, so that we can add routes to it
+ * Every router file must require express
+ * otherwise it wil not recognize express
+ * express.router is the router that handles ALL routers
+ * NOW you can get and set on var router
+ * access the router object, so that we can add routes to it
+ * All functionality must be in the controller, routers are only for url's
+ */
+var controller = require('./../controllers/');
 var express = require('express');
 var router = express.Router();
-var controller = require('../controllers/message')
 
-
-/**
-* route get naar message met bepaalde id 
-*/
-// todo, move this to the controller
-router.get('/:id', function (req, res) {
-	var id = req.params.id;
-	console.log(id);
-	res.send("GET message with :id " + id);
-});
-/**
-* route get naar messages
-* dit is gewoon / anders is het messages/messages , nu messages/
-*/
+router.get('/', controller.read);
+// Go to specific user
+router.get('/:id', controller.readOne);
+// this route is the same user/user, to make it clean
 router.post('/', controller.create);
-/**
-* route post messages 
-*/
-router.get('/', controller.getAll);
+router.put('/:id', controller.update);
+router.delete('/:id', controller.remove);
 
 module.exports = router;
