@@ -1,19 +1,22 @@
 /**
-* Elke routers file moet de express require hebben 
-* anders kent hij express niet.
-* express.router is router die alle routes afhandeld.
-* nu kan je op var router getten en posten
-*/
+ * Every router file must require express
+ * otherwise it wil not recognize express
+ * express.router is the router that handles ALL routers
+ * NOW you can get and set on var router
+ */
 // access the router object, so that we can add routes to it
 var express = require('express');
 var router = express.Router();
 
+// The root URL, if requested we will render the index
 router.get('/', function (req, res) {
-  res.send('Hello World!');
+  res.send('index', {
+      title: 'Hello IMD!',
+      urls: ['users', 'messages']
+  });
 });
 
 /**
-* Als je een module required moet je deze openstellen naar de buitenwereld 
-*
+ * if your module is required you have to make it available
 */
 module.exports = router;
