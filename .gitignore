@@ -4,3 +4,4 @@ sites/*/settings*.php
 # Ignore paths that contain user-generated content.
 /node_modules
 /.idea
+/Try
