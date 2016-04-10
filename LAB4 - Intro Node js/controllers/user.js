@@ -27,8 +27,12 @@ function getAll(req, res, next) {
     .find({})
     .populate('family')
     .exec(function onUsersFound(err, users) {
-      // we return the json version with cleaned up model of the user
-      res.send(users);
+      //Now return the a clean json to users instead of sending everything
+      //models/user.js for json
+      var transform = _.map(messages, function (user) {
+        return user.toJSON();
+      });
+      res.send(transform);
     });
 }
 module.exports.read = getAll;
@@ -40,7 +44,8 @@ function getOne(req, res, next) {
       res.status(404).send("User not found");
     }
 
-    res.send(user);
+    // we return the json version with cleaned up model of the user
+    res.send(user.toJSON());
   });
 }
 module.exports.readOne = getOne;
@@ -50,7 +55,8 @@ function add(req, res, next) {
   var newUser = new User(req.body);
 
   newUser.save(function onUserSaved(err, user) {
-    res.send(user);
+    // we return the json version with cleaned up model of the user
+    res.send(user.toJSON());
   });
 }
 module.exports.create = add;
@@ -62,7 +68,7 @@ function update(req, res, next) {
       res.status(404).send("User not found");
     }
     // we return the json version with cleaned up model of the user
-    res.send(user);
+    res.send(user.toJSON());
   });
 }
 module.exports.update = update;
