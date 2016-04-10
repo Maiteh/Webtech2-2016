@@ -13,7 +13,6 @@ var router = express.Router();
 router.get('/', controller.read);
 // Go to specific message
 router.get('/:id', controller.readOne);
-router.get('/room/:room', controller.readFromRoom);
 // this route is the same message/message, to make it clean
 router.post('/', controller.create);
 router.put('/:id', controller.update);
