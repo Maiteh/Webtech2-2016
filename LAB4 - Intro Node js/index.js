@@ -39,14 +39,16 @@ app.use(express.static('public'));
  * wil parse JSON that we post
  * makes it available for requests of req.body
  */
- app.use(require('body-parser').json());
+app.use(require('body-parser').json());
 
-//include a router
+
+// include our router
 app.use('/', require('./routers'));
 app.use('/users', require('./routers/user'));
-app.use('/messages', require('./routers/messages'));
+app.use('/messages', require('./routers/message'));
 
-//Setting up the server on port 3000
-app.listen(3000, function(){
-    console.log(chalk.yellow('The app is available on ' + chalk.bold.red('http://localhost:3000') + '!'));
+// fire up our server, on port 3000.
+app.listen(3000, function () {
+  console.log(chalk.blue('Your app is available on ' + chalk.bold.yellow('http://localhost:3000') + '!'));
 });
+

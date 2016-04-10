@@ -21,90 +21,57 @@ var User = require('./../models/user');
  * @type {*[]}
  */
 
-
-/**
- * get all users
- * @param req
- * @param res
- * @param next
- */
+// get all users
 function getAll(req, res, next) {
-    User
-        .find({})
-        .populate('family')
-        .exec(function onUsersFound(err, users) {
-            // we return the json version with cleaned up model of the user
-            var transform = _.map(users, function (user) {
-                return user.toJSON();
-            });
-            res.send(transform);
-        });
+  User
+    .find({})
+    .populate('family')
+    .exec(function onUsersFound(err, users) {
+      // we return the json version with cleaned up model of the user
+      res.send(users);
+    });
 }
 module.exports.read = getAll;
 
-/**
- * get user by id (req.params.id)
- * @param req
- * @param res
- * @param next
- */
+// get one user by id (req.params.id)
 function getOne(req, res, next) {
-    User.findOne({_id: req.params.id}, function onUserFound(err, user) {
-        if(!user) {
-            res.status(404).send("User not found");
-        }
+  User.findOne({_id: req.params.id}, function onUserFound(err, user) {
+    if(!user) {
+      res.status(404).send("User not found");
+    }
 
-        // we return the json version with cleaned up model of the user
-        res.send(user.toJSON());
-    });
+    res.send(user);
+  });
 }
 module.exports.readOne = getOne;
 
-/**
- * create a new user (req.body)
- * we return the json version with cleaned up
- * model of the user
- * @param req
- * @param res
- * @param next
- */
+// create a new user (req.body)
 function add(req, res, next) {
-    var newUser = new User(req.body);
+  var newUser = new User(req.body);
 
-    newUser.save(function onUserSaved(err, user) {
-
-        res.send(user.toJSON());
-    });
+  newUser.save(function onUserSaved(err, user) {
+    res.send(user);
+  });
 }
 module.exports.create = add;
 
-/**
- * update a user (req.body)
- * @param req
- * @param res
- * @param next
- */
+// update a user (req.body)
 function update(req, res, next) {
-    User.findOneAndUpdate({_id: req.params.id}, req.body, function onUserUpdated(err, user) {
-        if(!user) {
-            res.status(404).send("User not found");
-        }
-
-        // we return the json version with cleaned up model of the user
-        res.send(user.toJSON());
-    });
+  User.findOneAndUpdate({_id: req.params.id}, req.body, function onUserUpdated(err, user) {
+    if(!user) {
+      res.status(404).send("User not found");
+    }
+    // we return the json version with cleaned up model of the user
+    res.send(user);
+  });
 }
 module.exports.update = update;
 
-/**
- * remove one user by id (req.params.id)
- * @param req
- * @param res
- * @param next
- */
+// remove one user by id (req.params.id)
 function remove(req, res, next) {
-    User.findOneAndRemove({_id: req.params.id}, function onUserFound(err, user) {
-        res.status(204).send();
-    });
+  User.findOneAndRemove({_id: req.params.id}, function onUserFound(err, user) {
+    res.status(204).send();
+  });
 }
 module.exports.remove = remove;
+

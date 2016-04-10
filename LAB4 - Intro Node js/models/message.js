@@ -9,10 +9,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 // add one user to the database
 var messageSchema = new Schema({
-	name: String,
-	content: String,
+    name: String,
+    content: String,
     room: String,
-	family: [{type: Schema.ObjectId, ref: 'Message'}]
+    family: [{type: Schema.ObjectId, ref: 'Message'}]
 });
 // then we compile this schema into a model
 var Message = mongoose.model('Message', messageSchema);
