@@ -1,32 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Weather</title>
-	<style>
-        body{
-            background-color: #000;
-            color: white;
-            font-family: helvetica;
-        }
-        
-        .weather{
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-        }
-    </style>
-</head>
-<body>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>What's the weather</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+  <body>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+      </button>
+      <a class="navbar-brand" href="#">What's the weather</a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Vandaag</a></li>
+        <li><a href="#">Morgen</a></li>
+        <li><a href="#">Overmorgen</a></li>
+        <li><a href="#">Binnen 3 dagen</a></li>
+        <li><a href="#">Binnen 4 dagen</a></li>
+        <li><a href="#">Binnen 5 dagen</a></li>
+        <li><a href="#">Binnen 6 dagen</a></li>
+        </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+    <div class="row">
+    <div class="col-md-12"><p id="stad" class="text-center">Stad</p></div>
+  </div>
+    <div class="row">
+    <div class="col-md-12"><p id="tempnow" class="text-center">Huidige temperatuur</p></div>
+  </div>
+
+  <hr>
 	
-	<div class="weather">
-		<div><canvas id="weather-icon" width="200" height="200"></canvas></div>
-		<h1 class="weather-summary"></h1>
+  <div class="row">
+	  <div class="col-md-12"><p id="date" class="text-center">Datum van vandaag</p></div>
 	</div>
+  <div class="row">
+    <canvas id="weatherimage"></canvas>
+  </div>
+   <div class="row">
+    <div class="col-md-12"><p id="weather" class="text-center">Het weer</p></div>
+  </div>
+   <div class="row">
+    <div class="col-md-12"><p id="mintemp" class="text-center">min temp</p></div>
+  </div>
+   <div class="row">
+    <div class="col-md-12"><p id="maxtemp" class="text-center">Max temp</p></div>
+  </div>
 
-	<script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
-	<script src="js/skycons.js"></script>
-	<script src="js/start.js"></script>
 
-</body>
+
+  <!-- Scripts -->
+  <!-- Google geo script -->
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> 
+
+  <!-- Skycons script -->
+  <script src="js/skycons.js"></script>
+  <!-- Jquery script -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Bootstrap JS -->
+	<script src="js/bootstrap.min.js"></script>
+  <!-- location  -->
+  <script type="application/javascript" src="js/app.js"></script>
+  
+
+  </body>
 </html>

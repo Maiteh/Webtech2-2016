@@ -1,0 +1,29 @@
+body{
+	height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  font-size: 2em;
+  text-shadow: 0 0 10px #000;
+  color: #fff;
+  background: #888;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+p{
+	color: white;
+}
+canvas{
+	margin: 0 auto;
+	display:block;
+}
+#date{
+	font-size: 36px;
+}
+#tempnow, #weather{
+	font-size: 24px;
+}
+#maxtemp, #mintemp{
+	font-size: 18px;
+}
