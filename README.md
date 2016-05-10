@@ -24,7 +24,7 @@ There are some things you need to take in consideration when working with git.
  - Ofcourse, don't forget to push atleast at the end of the day.
  - Give a logical name to your branch. Don't use your own name.
 
-> **Good example **
+> **Good example**
 > 
 >  - `Master`
 >   - `Develop`
