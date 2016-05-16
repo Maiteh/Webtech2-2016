@@ -14,10 +14,10 @@ var WrapperElement = function (element) {
     }
 };
 
-WrapperElement.prototype.toggleClass = function(className) {
+WrapperElement.prototype.toggleClass = function (className) {
     //Loop if multiple otherwhise just make toggable
-    if(this.isArray) {
-        for(var i = 0; i < this.element.length; i++) {
+    if (this.isArray) {
+        for (var i = 0; i < this.element.length; i++) {
             this.element[i].classList.toggle(className);
         }
     } else {
@@ -26,10 +26,10 @@ WrapperElement.prototype.toggleClass = function(className) {
     return this;
 };
 
-WrapperElement.prototype.addClass = function(className) {
+WrapperElement.prototype.addClass = function (className) {
     if(this.isArray) {
         //Loop if multiple otherwhise just add class
-        for(var i = 0; i < this.element.length; i++) {
+        for (var i = 0; i < this.element.length; i++) {
             this.element[i].className += '' + className;
         }
     } else {
@@ -39,10 +39,10 @@ WrapperElement.prototype.addClass = function(className) {
     return this;
 };
 
-WrapperElement.prototype.prepend = function(item, value) {
-    var newTodo = document.createElement(item);
+WrapperElement.prototype.prepend = function (item, value) {
+    var newTodo       = document.createElement(item);
     newTodo.className = 'prior-high';
-    var nodetext = document.createTextNode(value);
+    var nodetext      = document.createTextNode(value);
     newTodo.appendChild(nodetext);
 
     var list = document.getElementById('todo-list');
@@ -51,7 +51,7 @@ WrapperElement.prototype.prepend = function(item, value) {
     return this;
 };
 
-WrapperElement.prototype.keyup = function(action){
+WrapperElement.prototype.keyup = function (action){
     if(this.isArray) {
         // multiple elements, we'll need to loop
         for(var i = 0; i < this.element.length; i++) {
@@ -64,13 +64,12 @@ WrapperElement.prototype.keyup = function(action){
     return this;
 };
 
-WrapperElement.prototype.click = function(action){
-    if(this.isArray){
-        for( var i = 0; i < this.element.length; i++){
+WrapperElement.prototype.click = function (action){
+    if (this.isArray) {
+        for ( var i = 0; i < this.element.length; i++) {
             this.element[i].addEventListener('click', action);
         }
-    }
-    else {
+    } else {
         this.element.addEventListener('click', action);
     }
     //returning original wrapper element to us it in other functions
@@ -78,7 +77,7 @@ WrapperElement.prototype.click = function(action){
 };
 
 WrapperElement.prototype.val = function(value) {
-    if(this.isArray) {
+    if (this.isArray) {
         for(var i = 0; i < this.element.length; i++) {
             if(value == ''){
                 this.element[i].value = '';
@@ -87,22 +86,20 @@ WrapperElement.prototype.val = function(value) {
             }
         }
     } else {
-        if(value == ''){
+        if (value == '') {
             this.element.value = '';
         } else {
             return this.element.value;
         }
     }
-
     return this;
 };
 
-var $ = function(selector) {
+var $ = function (selector) {
     // check if selector is an object already e.g. by passing 'this' on clicks
-    if(typeof(selector) == 'object') {
+    if (typeof(selector) == 'object') {
         return new WrapperElement(selector);
     }
-
     var selectedItems = document.querySelectorAll(selector);
     var newElement = new WrapperElement(selectedItems);
     return newElement;
