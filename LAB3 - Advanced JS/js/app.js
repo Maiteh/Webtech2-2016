@@ -1,8 +1,8 @@
 /* ---------------------------------------------------- APP ---------------------------------- */
 
 
-$('#add-item-text').keyup(function(e){ 					// make sure we can detect a keyup event
-	if(e.which === 13) {
+$('#add-item-text').keyup(function (e) { 					// make sure we can detect a keyup event
+	if (e.which === 13) {
 		// this is the ENTER key with code 13
 		var todoText = $(this).val();
 		var li = document.createElement('li');			// create a new list item in memory
@@ -17,12 +17,12 @@ $('#add-item-text').keyup(function(e){ 					// make sure we can detect a keyup e
 		});
 	}
 
-	$('li').click(function(){ 								// make sure we can click on an element
+	$('li').click(function() { 								// make sure we can click on an element
 		$(this).toggleClass('done'); 						// when we click on any list item, add the class done if it doesn't exist yet on the element or remove it when it exists
 	});
 });
 
-$('li').click(function(){ 								// make sure we can click on an element
+$('li').click(function() { 								// make sure we can click on an element
 	$(this).toggleClass('done'); 						// when we click on any list item, add the class done if it doesn't exist yet on the element or remove it when it exists
 });
 
