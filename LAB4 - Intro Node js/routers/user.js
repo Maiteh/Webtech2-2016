@@ -7,8 +7,8 @@
  * All functionality must be in the controller, routers are only for url's
  */
 var controller = require('./../controllers/user');
-var express    = require('express');
-var router     = express.Router();
+var express = require('express');
+var router = express.Router();
 
 router.get('/', controller.read);
 // Go to specific user

@@ -121,7 +121,8 @@ But until then, here is a screenshot of my final scoure of this course.
 ![Final score mongodb university nodejs](https://i.gyazo.com/74445a7713f964636e002b3a1edcd138.png)
 
 ----------
-[###IMD Q&A App - Final Project](https://github.com/Maiteh/QnA)
+###Final Project
+IMD Q&A App
 ===================
 
 This is a Live Q&A app made as a final project for the course Webtechnologie2 2016 of Thomas More.
@@ -135,43 +136,14 @@ download the developement branch and install the modules with
 >npm install
 
 Then you can run the app with
-> node app.js
-
-or
-> nodemon
-
-When in developement run with
-> gulp
+> node index.js
 
 The app will be running on *localhost:3000*.
 
 ----------
 ###  What do we have so far
-When surfing to localhost:3000 you'll get a login page with the option to create an account. 
-When the account is created you will be redirected to the login page again and you van login now.
-When logged in you'll see a page that list all the discussions. In the head navigation you'll see an option to create a new one or log out.
-When clicking on a discussion you can read the full discussion topic and all te posted questions and answers or ask/answer a new one.
-You can share a topic on Facebook (Doesn't work on localhost)
-You can see how many users are active in a topic.
-You get yout location on the first page.
-
->**Todo**
-
-> - make questions and awsners realtime
-> - view which discussions are nearby
-> - make the creator of the discussion the moderator
-> - give moderator option to delete or edit their posts.
-> - able to upload images in post.
+When surfing to localhost:3000 you'll get a login screen where you can choose a login name and password.
+Then you'll enter the main room where you can start chatting.
 
 ----------
-
->**Documentation list**
-
-> - Express validate
-> https://github.com/ctavan/express-validator 
-> - passport
->
-> http://code.tutsplus.com/tutorials/authenticating-nodejs-applications-with-passport--cms-21619
-> http://passportjs.org
-> 
 

@@ -1,49 +1,54 @@
-nav ul {
+nav ul{
     display: flex;
     flex-wrap: wrap;
     justify-content:center;
 }
-nav ul li {
+nav ul li{
     font-size: 1.2rem;
     list-style: none;
     width: 150px;
     text-align: center;
 }
-.logo {
+.logo{
     width: 100%;
     text-align: center;
 }
 
-#photos {
+#photos{
     display: flex;
     width: 100%;
     justify-content: space-around;
     flex-wrap: wrap;
 }
-#photos img {
+#photos img{
     margin: 20px;
 }
 
 
-/* ==  Max Screen == */
+/* ==  Bigger screens == */
 @media (min-width: 960px) {  
-nav ul li {
+nav ul li{
     margin: auto;
 }
-.typography {
+.typography
+{
     order: 1;
 }
-.ui {
+.ui
+{
     order: 2;
 }
-.logo {
+.logo
+{
     order: 3;
     width: 150px;
 }
-.branding {
+.branding
+{
     order: 4;
 }
-.graffiti {
+.graffiti
+{
     order: 5;
 }
 }

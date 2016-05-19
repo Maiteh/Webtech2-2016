@@ -1,4 +1,4 @@
-var mongoose      = require('mongoose');
+var mongoose = require('mongoose');
 /**
  * Mongoose brings structure in the webapp
  * sheme's need tot be turned into models
@@ -6,12 +6,12 @@ var mongoose      = require('mongoose');
  */
 
 // first, we define a mongoose schema
-var Schema        = mongoose.Schema;
+var Schema = mongoose.Schema;
 // add one user to the database
 var messageSchema = new Schema({
-    name:    String,
+    name: String,
     content: String,
-    room:    String,
+    room: String,
 }, {
     //transform fro json
     toObject: {

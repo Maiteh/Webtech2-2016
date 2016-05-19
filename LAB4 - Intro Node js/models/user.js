@@ -8,14 +8,14 @@ var mongoose = require('mongoose');
 
 
 // first, we define a mongoose schema
-var Schema     = mongoose.Schema;
+var Schema = mongoose.Schema;
 // add one user to the database
 var userSchema = new Schema({
     firstname: String,
-    lastname:  String,
-    family:    [{type: Schema.ObjectId, ref: 'User'}]
+    lastname: String,
+    family: [{type: Schema.ObjectId, ref: 'User'}]
 });
 // then we compile this schema into a model
-var User       = mongoose.model('User', userSchema);
+var User = mongoose.model('User', userSchema);
 
 module.exports = User;

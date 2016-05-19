@@ -1,12 +1,12 @@
 //importing modules we want to have
-var chalk    = require('chalk');
-var express  = require('express');
-var ejs      = require('ejs');
-var cors     = require('cors');
+var chalk = require('chalk');
+var express = require('express');
+var ejs = require('ejs');
+var cors = require('cors');
 var mongoose = require('mongoose');
 
 //creating the app
-var app      = express();
+var app = express();
 
 // connect to our database
 mongoose.connect('mongodb://localhost/lab4');
