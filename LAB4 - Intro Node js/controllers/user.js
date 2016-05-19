@@ -2,7 +2,7 @@
 var shortid = require('shortid');
 //A modern JS library.
 var _ = require('lodash');
-var User = require('./../models/user');
+var User    = require('./../models/user');
 
 /**
  * A static users

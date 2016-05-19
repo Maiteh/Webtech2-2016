@@ -12,7 +12,7 @@ var router = express.Router();
 router.get('/', function (req, res) {
   res.send('index', {
       title: 'Hello IMD!',
-      urls: ['users', 'messages']
+      urls:  ['users', 'messages']
   });
 });
 

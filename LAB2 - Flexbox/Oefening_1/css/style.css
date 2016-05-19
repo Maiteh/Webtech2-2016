@@ -1,4 +1,4 @@
-html, body{
+html, body {
     min-height: 100%;
     padding: 0;
     margin: 0;
@@ -12,7 +12,7 @@ body{
 }
 
 /* === Custom css === */
-h1{
+h1 {
     font-size: 2.4rem;
     text-transform: uppercase;
     font-family: 'Arial narrow';
@@ -25,27 +25,27 @@ h1{
     margin-left: 20px;
 }
 /* == nav == */
-nav{
+nav {
 	text-transform: uppercase;
 }
-nav ul{
+nav ul {
 	list-style: none;
 	display: flex;	
 	flex-direction: column;
 	align-content: space-around;
 	height: 200px;
 }
-nav li{
+nav li {
 	flex: 1;
 }
-nav a{
+nav a {
 	text-decoration: none;
 	color: white;
 	font-size: 0.8rem;
 }
 
 /* == Albums == */
-#albums h2{
+#albums h 2{
 	color: white;
 	text-align: center;
 }
@@ -61,41 +61,41 @@ nav a{
     font-weight: bold;
     text-align: center
 }
-#albums li{
+#albums li {
 	flex: 1;
 }
 
 
-/* == Middel maat scherm ==*/
-@media screen and (min-width: 960px){
-header{
-	display: flex;
-}
-nav{
-	flex: 1;
-}
-nav ul{
-	height: 70px;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	align-content: space-around;
-}    
-nav li{
-	text-align: center;
+/* == Middle screen ==*/
+@media screen and (min-width: 960px) {
+  header {
+  	  display: flex;
+  }
+  nav {
+  	  flex: 1;
+  }
+  nav ul {
+  	  height: 70px;
+  	  display: flex;
+  	  flex-direction: row;
+  	  align-items: center;
+  	  align-content: space-around;
+  }    
+  nav li {
+  	  text-align: center;
+  }
+
+  #albums ul {
+  	  flex-direction: row;
+  }
 }
 
-#albums ul{
-	flex-direction: row;
-}
-}
-
-/* == Groot scherm == */ 
-@media screen and (min-width: 1100px){
-nav ul{
-    width: 700px;
-    margin-left: auto;
-}
+/* == Max screen == */ 
+@media screen and (min-width: 1100px) {
+  nav ul {
+      width: 700px;
+      margin-left: auto;
+  }  
 }
 
 
