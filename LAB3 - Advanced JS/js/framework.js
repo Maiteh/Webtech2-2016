@@ -39,16 +39,8 @@ WrapperElement.prototype.addClass = function (className) {
     return this;
 };
 
-WrapperElement.prototype.prepend = function (item, value) {
-    var newTodo       = document.createElement(item);
-    newTodo.className = 'prior-high';
-    var nodetext      = document.createTextNode(value);
-    newTodo.appendChild(nodetext);
-
-    var list = document.getElementById('todo-list');
-    list.insertBefore(newTodo, list.childNodes[0]);
-
-    return this;
+WrapperElement.prototype.prepend = function (itemTodo) {
+    this.element.insertBefore(itemTodo, this.element.firstChild);
 };
 
 WrapperElement.prototype.keyup = function (action){
@@ -62,45 +54,63 @@ WrapperElement.prototype.keyup = function (action){
         this.element[0].addEventListener('keyup', action);
     }
     return this;
+WrapperElement.prototype.keyup = function (action) {
+	if (this.isArray) {
+		for (var i = 0 ; i<this.element.length ; i++) {
+			this.element[i].addEventListener('keyup' , action);
+		}
+	} else {
+		this.element.addEventListener('keyup' , action);
+	}
+	return this;
 };
 
 WrapperElement.prototype.click = function (action){
     if (this.isArray) {
         for ( var i = 0; i < this.element.length; i++) {
             this.element[i].addEventListener('click', action);
+WrapperElement.prototype.click = function (action) {
+    if ( this.isArray) {
+        for (var i = 0 ; i<this.element.length ; i++) {
+            this.element[i].addEventListener("click" , action);
         }
     } else {
         this.element.addEventListener('click', action);
     }
     //returning original wrapper element to us it in other functions
-    return this;
+        this.element.addEventListener("click" , action);
+    }	
 };
 
-WrapperElement.prototype.val = function(value) {
-    if (this.isArray) {
-        for(var i = 0; i < this.element.length; i++) {
-            if(value == ''){
-                this.element[i].value = '';
-            } else {
-                return this.element[i].value;
-            }
-        }
-    } else {
-        if (value == '') {
-            this.element.value = '';
-        } else {
-            return this.element.value;
-        }
-    }
-    return this;
+WrapperElement.prototype.val = function (value) {
+    var current = this.element.value;
+    document.getElementById("add-item-text").value = "";
+    return current;
 };
 
 var $ = function (selector) {
-    // check if selector is an object already e.g. by passing 'this' on clicks
-    if (typeof(selector) == 'object') {
-        return new WrapperElement(selector);
-    }
-    var selectedItems = document.querySelectorAll(selector);
-    var newElement = new WrapperElement(selectedItems);
-    return newElement;
+	// check if selector is an object already e.g. by passing 'this' on clicks
+	if (typeof(selector) == "object") {
+		return new WrapperElement(selector);
+	}
+	// get the first character to know if we want an element, id or class
+	var firstCharacter = selector.charAt(0);
+	var selectedItems;
+	switch (firstCharacter) {
+		case '#':
+		var elementid =	selector.substr(1);
+		selectedItems = document.getElementById(elementid);
+		break;
+
+		case '.':
+        var elementclas =	selector.substr(1);
+		return new WrapperElement(document.getElementsByClassName(selector));
+        break;
+		
+		default:
+		selectedItems = document.getElementsByTagName(selector);
+        break;
+	}
+	var newElement = new WrapperElement(selectedItems);
+	return newElement;
 };
