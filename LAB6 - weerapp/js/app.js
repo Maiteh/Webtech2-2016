@@ -28,8 +28,6 @@ function codeLatLng(lat, lng) {
             if (results[1]) {
                 //formatted address
                 stad = results[3].formatted_address;
-                document.querySelector("body").style.backgroundImage = "url('https://fourtonfish.com/tutorials/weather-web-app/images/default.jpg')";
-                document.querySelector("#image-source").setAttribute("href", "https://www.flickr.com/photos/superfamous/310185523/sizes/o/");
             } else {
                 alert("Niets gevonden");
             }
@@ -49,10 +47,11 @@ today.each(function (day) {
     });
 });
 
+    
 
 // WEER
-var theWeather,
-    weatherToday,
+var weatherData,
+    weatherDescription,
     skycons = new Skycons({"color" : "white"}),
     Weather = function (lat, lon) {
         this.lat = lat;
@@ -87,8 +86,8 @@ function loadData() {
         });
 
     dataWeather = function (day) {
-        weatherToday = this.weatherData.daily.data[day];
-        show(weatherToday);
+        weatherDescription = this.weatherData.daily.data[day];
+        show(weatherDescription);
     };
 
     function show(weather) {
@@ -119,17 +118,17 @@ function loadData() {
             datenow    = new Date(),
             timenow    = datenow.getHours(),
             nowweather = this.weatherData.hourly.data[timenow],
-            weathernow = Math.round((nowweather.temperature - 32) * 5 / 9),
-            mintemp    = Math.round((weatherToday.temperatureMin - 32) * 5 / 9),
-            maxtemp    = Math.round((weatherToday.temperatureMax - 32) * 5 / 9),
-            iconcode = weatherToday.icon;
-        console.log(weathernow);
+            tempnow    = Math.round((nowweather.temperature - 32) * 5 / 9),
+            mintemp    = Math.round((weatherDescription.temperatureMin - 32) * 5 / 9),
+            maxtemp    = Math.round((weatherDescription.temperatureMax - 32) * 5 / 9),
+            iconcode   = weatherDescription.icon;
+        console.log(tempnow);
         getIcon(iconcode);
 
         $("#date").text(daysofweek[day.getDay()] + " " + day.getDate() + " " + months[day.getMonth()] + " " + day.getFullYear());
         $("#stad").text("U bevind zich in de buurt van: " + stad);
-        $("#tempnow").text("Het is momenteel: " + weathernow + "°C");
-        $("#weather").text(weatherToday.summary);
+        $("#tempnow").text("Het is momenteel: " + tempnow + "°C");
+        $("#weather").text(weatherDescription.summary);
         $("#mintemp").text(mintemp + "°C");
         $("#maxtemp").text(maxtemp + "°C");
     }
@@ -137,17 +136,20 @@ function loadData() {
     function loadBackground(lat, lon, weatherTag) {
         var script_element = document.createElement('script');
 
-        script_element.src = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=0677de6a559772c8cb27dd22219dfa0c&lat=" + lat + "&lon=" + lon + "&accuracy=1&tags=" + weatherTag + "&sort=relevance&extras=url_l&format=json";
+        script_element.src = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=b2bdad64e62793799474c0b4410fde9a&lat=" + lat + "&lon=" + lon + "&accuracy=1&tags=" + weatherTag + "&sort=relevance&extras=url_l&format=json";
         document.getElementsByTagName('head')[0].appendChild(script_element);
+        console.log('flickrsrc',script_element.src)
     }
 
     function jsonFlickrApi(data) {
         console.log(data);
         if (data.photos.pages > 0) {
+            // If there are pictures for our weather and location,
             var photo = data.photos.photo[0];
             document.querySelector("body").style.backgroundImage = "url('" + photo.url_l + "')";
             document.querySelector("#image-source").setAttribute("href", "http://www.flickr.com/photos/" + photo.owner + "/" + photo.id);
         } else {
+            // Otherwise let's load a generic background.
             document.querySelector("body").style.backgroundImage = "url('https://fourtonfish.com/tutorials/weather-web-app/images/default.jpg')";
             document.querySelector("#image-source").setAttribute("href", "https://www.flickr.com/photos/superfamous/310185523/sizes/o/");
         }
