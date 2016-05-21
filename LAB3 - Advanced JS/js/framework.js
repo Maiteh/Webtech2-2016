@@ -72,25 +72,25 @@ WrapperElement.prototype.click = function (action){
 WrapperElement.prototype.click = function (action) {
     if ( this.isArray) {
         for (var i = 0 ; i<this.element.length ; i++) {
-            this.element[i].addEventListener("click" , action);
+            this.element[i].addEventListener('click' , action);
         }
     } else {
         this.element.addEventListener('click', action);
     }
     //returning original wrapper element to us it in other functions
-        this.element.addEventListener("click" , action);
+        this.element.addEventListener('click' , action);
     }	
 };
 
 WrapperElement.prototype.val = function (value) {
     var current = this.element.value;
-    document.getElementById("add-item-text").value = "";
+    document.getElementById('add-item-text').value = '';
     return current;
 };
 
 var $ = function (selector) {
 	// check if selector is an object already e.g. by passing 'this' on clicks
-	if (typeof(selector) == "object") {
+	if (typeof(selector) == 'object') {
 		return new WrapperElement(selector);
 	}
 	// get the first character to know if we want an element, id or class
@@ -103,7 +103,7 @@ var $ = function (selector) {
 		break;
 
 		case '.':
-        var elementclas =	selector.substr(1);
+        var elementclas = selector.substr(1);
 		return new WrapperElement(document.getElementsByClassName(selector));
         break;
 		

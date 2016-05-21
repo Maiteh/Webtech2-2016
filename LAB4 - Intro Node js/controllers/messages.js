@@ -21,7 +21,7 @@ module.exports.read = getAll;
 // get one message by id (req.params.id)
 function getOne(req, res, next) {
     Message.findOne({_id: req.params.id}, function onMessageFound(err, message) {
-        if(!message) {
+        if (!message) {
             res.status(404).send("Message not found");
         }
 
@@ -45,7 +45,7 @@ module.exports.create = add;
 // update a message (req.body)
 function update(req, res, next) {
     Message.findOneAndUpdate({_id: req.params.id}, function onMessageFound(err, message) {
-        if(!message) {
+        if (!message) {
             return res.status(404).send("Message not found");
         }
     });

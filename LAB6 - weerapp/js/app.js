@@ -17,8 +17,9 @@ function error() {
 function getPosition(position) {
     lat = position.coords.latitude;
     lon = position.coords.longitude;
-    codeLatLng(lat, lon);
     w   = new Weather(lat, lon);
+    codeLatLng(lat, lon);
+        
 }
 function codeLatLng(lat, lng) {
     var latlng = new google.maps.LatLng(lat, lng);
@@ -41,10 +42,10 @@ function codeLatLng(lat, lng) {
 // EINDE LOCATIE
 
 // DAGEN
-var days = $("a");
-days.each(function (day) {
+var today = $("a");
+today.each(function (day) {
     $(this).on("click", function () {
-        weatherData(day - 1);
+        dataWeather(day - 1);
     });
 });
 
@@ -59,7 +60,7 @@ var theWeather,
         check();
     };
 function check() {
-    if (!localStorage.getItem("weatherdata")) {
+    if (!localStorage.getItem("dataweather")) {
         loadData();
     } else {
         if (Date().getTime - localStorage.getItem('time') < 300000) {
@@ -75,48 +76,49 @@ function loadData() {
     $.ajax({
         url:      url,
         type:     "GET",
-        dataType: "jsonp",
+        dataType: "jsonp"
     })
         .done(function (data) {
             console.log("Gelukt");
-            theWeather = data;
-            localStorage.setItem("weatherdata", JSON.stringify(this.theWeather));
+            weatherData = data;
+            localStorage.setItem("dataweather", JSON.stringify(this.weatherData));
             localStorage.setItem("time", new Date().getTime());
-            weatherData(0);
+            dataWeather(0);
         });
-    
-    weatherData = function (day) {
-        weatherToday = this.theWeather.daily.data[day];
+
+    dataWeather = function (day) {
+        weatherToday = this.weatherData.daily.data[day];
         show(weatherToday);
     };
-    
+
     function show(weather) {
-        var day      = new Date(weather.time * 1000),
-            weekdays = new Array(),
-            months = new Array();
-        weekdays[0]  = "Zondag";
-        weekdays[1]  = "Maandag";
-        weekdays[2]  = "Dinsdag";
-        weekdays[3]  = "Woensdag";
-        weekdays[4]  = "Donderdag";
-        weekdays[5]  = "Vrijdag";
-        weekdays[6]  = "Zaterdag";
-        months[0]    = "Januari";
-        months[1]    = "Februari";
-        months[2]    = "Maart";
-        months[3]    = "April";
-        months[4]    = "Mei";
-        months[5]    = "Juni";
-        months[6]    = "Juli";
-        months[7]    = "Augustus";
-        months[8]    = "September";
-        months[9]    = "October";
-        months[10]   = "November";
-        months[11]   = "December";
- 
-        var datenow    = new Date(),
+        var day        = new Date(weather.time * 1000),
+            daysofweek = [
+                "Zondag",
+                "Maandag",
+                "Dinsdag",
+                "Woensdag",
+                "Donderdag",
+                "Vrijdag",
+                "Zaterdag"
+            ],
+            months     = [
+                "Januari",
+                "Februari",
+                "Maart",
+                "April",
+                "Mei",
+                "Juni",
+                "Juli",
+                "Augustus",
+                "September",
+                "Oktober",
+                "November",
+                "December"
+            ],
+            datenow    = new Date(),
             timenow    = datenow.getHours(),
-            nowweather = this.theWeather.hourly.data[timenow],
+            nowweather = this.weatherData.hourly.data[timenow],
             weathernow = Math.round((nowweather.temperature - 32) * 5 / 9),
             mintemp    = Math.round((weatherToday.temperatureMin - 32) * 5 / 9),
             maxtemp    = Math.round((weatherToday.temperatureMax - 32) * 5 / 9),
@@ -124,8 +126,8 @@ function loadData() {
         console.log(weathernow);
         getIcon(iconcode);
 
-        $("#date")   .text(weekdays[day.getDay()] + " " + day.getDate() + " " + months[day.getMonth()] + " " + day.getFullYear());
-        $("#stad")   .text("U bevind zich in de buurt van: " + stad);
+        $("#date").text(daysofweek[day.getDay()] + " " + day.getDate() + " " + months[day.getMonth()] + " " + day.getFullYear());
+        $("#stad").text("U bevind zich in de buurt van: " + stad);
         $("#tempnow").text("Het is momenteel: " + weathernow + "°C");
         $("#weather").text(weatherToday.summary);
         $("#mintemp").text(mintemp + "°C");

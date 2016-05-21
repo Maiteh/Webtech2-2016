@@ -10,10 +10,10 @@ var router = express.Router();
 
 // The root URL, if requested we will render the index
 router.get('/', function (req, res) {
-  res.send('index', {
-      title: 'Hello IMD!',
-      urls:  ['users', 'messages']
-  });
+    res.send('index', {
+        title: 'Hello IMD!',
+        urls:  ['users', 'messages']
+    });
 });
 
 /**
